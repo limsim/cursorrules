@@ -1,0 +1,26 @@
+# UI Test Guidelines
+
+*1. Test one UI interaction per test
+*2. Use semantic selectors (data-testid, aria-labels)
+*3. Keep page object models simple and maintainable
+*4. Document visual requirements and expectations
+*5. Include accessibility testing
+*6. Test responsive behavior where applicable
+*7. Document browser/device requirements
+*8. Group tests by user journey or feature
+*9. Include error state testing
+*10. Add screenshots for visual regression
+
+## General Test Guidelines for UI Tests
+*1. Tests should be quick to execute
+*2. Support running tests:
+   *1. Individually
+   *2. By feature group
+   *3. Complete test suite
+*3. Maintain clear test documentation
+*4. Use consistent naming conventions
+*5. Keep test code as simple as production code
+*6. Regular test maintenance and cleanup
+*7. Version control test data
+*8. Document test dependencies
+*9. Include setup instructions 

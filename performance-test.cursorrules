@@ -1,0 +1,30 @@
+# Performance Test Guidelines
+
+*1. Define clear performance benchmarks
+*2. Document test environment requirements
+*3. Include baseline metrics
+*4. Test under realistic load conditions
+*5. Measure key performance indicators:
+   *1. Response time
+   *2. Throughput
+   *3. Resource usage
+   *4. Concurrency handling
+*6. Document test data requirements
+*7. Include cleanup procedures
+*8. Group tests by performance aspect
+*9. Add reporting requirements
+*10. Document performance thresholds
+
+## General Test Guidelines for Performance Tests
+*1. Tests should be quick to execute
+*2. Support running tests:
+   *1. Individually
+   *2. By feature group
+   *3. Complete test suite
+*3. Maintain clear test documentation
+*4. Use consistent naming conventions
+*5. Keep test code as simple as production code
+*6. Regular test maintenance and cleanup
+*7. Version control test data
+*8. Document test dependencies
+*9. Include setup instructions 

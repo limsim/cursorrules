@@ -1,0 +1,27 @@
+# Unit Test Guidelines
+
+*1. Each test should focus on a single unit of functionality
+*2. Test names should clearly describe the scenario being tested
+*3. Follow the Arrange-Act-Assert pattern
+*4. Keep mocks and stubs simple and minimal
+*5. Document test purpose and any complex setup
+*6. Tests should run in isolation
+*7. Avoid shared state between tests
+*8. Use descriptive assertion messages
+*9. Group related tests in descriptive describe/context blocks
+*10. Add tags/annotations for easy filtering and grouping
+*11. Add comment to each test stating which class and method is being tested
+
+## General Test Guidelines for Unit Tests
+*1. Tests should be quick to execute
+*2. Support running tests:
+   *1. Individually
+   *2. By feature group
+   *3. Complete test suite
+*3. Maintain clear test documentation
+*4. Use consistent naming conventions
+*5. Keep test code as simple as production code
+*6. Regular test maintenance and cleanup
+*7. Version control test data
+*8. Document test dependencies
+*9. Include setup instructions 
