@@ -1,0 +1,14 @@
+{
+  "name": "jira-ticket-creator",
+  "version": "1.0.0",
+  "description": "Script to create Jira tickets for cursor rules",
+  "main": "src/jira/api/jira-api.js",
+  "scripts": {
+    "start": "node src/jira/api/jira-api.js",
+    "create:story": "node src/jira/scripts/create-story.js"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "dotenv": "^10.0.0"
+  }
+} 

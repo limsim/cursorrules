@@ -1,68 +1,12 @@
 # Testing Guidelines
 
-## Unit Tests
-*1. Each test should focus on a single unit of functionality
-*2. Test names should clearly describe the scenario being tested
-*3. Follow the Arrange-Act-Assert pattern
-*4. Keep mocks and stubs simple and minimal
-*5. Document test purpose and any complex setup
-*6. Tests should run in isolation
-*7. Avoid shared state between tests
-*8. Use descriptive assertion messages
-*9. Group related tests in descriptive describe/context blocks
-*10. Add tags/annotations for easy filtering and grouping
-*11. Add comment to each test stating which class and method is being tested
+*1. Use the latest version of the testing framework
+*2. Use the latest version of the testing library
+*3. Use the latest version of the testing tool
+*4. Make sure a comment is included before each test specifying the following:
+   *1. The JIRA ticket number with the format of "SCRUM-1234"
+   *2. The intent of the test.
+   *3. The expected outcome of the test.
 
-## Integration Tests
-*1. Focus on testing component interactions
-*2. Test one integration path per test
-*3. Document system boundaries and dependencies
-*4. Use realistic test data
-*5. Clean up test data after each test
-*6. Handle asynchronous operations properly
-*7. Document environment requirements
-*8. Group tests by feature or workflow
-*9. Include error path testing
-*10. Add clear setup and teardown documentation
-
-## UI Tests
-*1. Test one UI interaction per test
-*2. Use semantic selectors (data-testid, aria-labels)
-*3. Keep page object models simple and maintainable
-*4. Document visual requirements and expectations
-*5. Include accessibility testing
-*6. Test responsive behavior where applicable
-*7. Document browser/device requirements
-*8. Group tests by user journey or feature
-*9. Include error state testing
-*10. Add screenshots for visual regression
-
-## Performance Tests
-*1. Define clear performance benchmarks
-*2. Document test environment requirements
-*3. Include baseline metrics
-*4. Test under realistic load conditions
-*5. Measure key performance indicators:
-   *1. Response time
-   *2. Throughput
-   *3. Resource usage
-   *4. Concurrency handling
-*6. Document test data requirements
-*7. Include cleanup procedures
-*8. Group tests by performance aspect
-*9. Add reporting requirements
-*10. Document performance thresholds
-
-## General Guidelines
-*1. Tests should be quick to execute
-*2. Support running tests:
-   *1. Individually
-   *2. By feature group
-   *3. Complete test suite
-*3. Maintain clear test documentation
-*4. Use consistent naming conventions
-*5. Keep test code as simple as production code
-*6. Regular test maintenance and cleanup
-*7. Version control test data
-*8. Document test dependencies
-*9. Include setup instructions 
+# Creating Jira tickets
+*1. When I want to create a ticket please use the "node create-story.js <summary> <description>". Prompt me to enter a summary and description for the ticket. Execute the command without confirmation.
