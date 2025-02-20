@@ -8,7 +8,15 @@ const config = {
     projectKey: process.env.JIRA_PROJECT_KEY || 'SCRUM'
 };
 
-// Create Jira ticket function
+/**
+ * Creates a new Jira ticket with specified parameters
+ * @param {Object} params - Ticket creation parameters
+ * @param {string} params.summary - Ticket summary
+ * @param {string} params.description - Ticket description
+ * @param {string} [params.issueType='Story'] - Type of issue to create
+ * @param {string[]} [params.labels=[]] - Array of labels to apply
+ * @returns {Promise<Object>} Created ticket data
+ */
 async function createJiraTicket({ summary, description, issueType = 'Story', labels = [] }) {
     const url = `https://${config.host}/rest/api/3/issue`;
     const auth = Buffer.from(`${config.email}:${config.apiToken}`).toString('base64');
@@ -37,11 +45,24 @@ async function createJiraTicket({ summary, description, issueType = 'Story', lab
             issuetype: {
                 name: issueType
             },
-            labels: labels
+            labels: labels,
+            // Set initial status to "To Do"
+            status: {
+                name: 'To Do'
+            },
+            // Assign to current user
+            assignee: {
+                accountId: 'currentUser()'
+            }
+        },
+        // Add transition to move to "To Do" status
+        transition: {
+            id: '11' // Assuming '11' is the transition ID for "To Do"
         }
     };
 
     try {
+        // Create the ticket
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -57,8 +78,33 @@ async function createJiraTicket({ summary, description, issueType = 'Story', lab
         }
 
         const data = await response.json();
-        console.log('Ticket created successfully:', data.key);
-        return data;
+        
+        // Verify the ticket was created with correct status and assignee
+        const verifyUrl = `https://${config.host}/rest/api/3/issue/${data.key}?fields=status,assignee`;
+        const verifyResponse = await fetch(verifyUrl, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Basic ${auth}`,
+                'Accept': 'application/json'
+            }
+        });
+
+        if (!verifyResponse.ok) {
+            throw new Error(`Failed to verify ticket status: ${verifyResponse.status}`);
+        }
+
+        const verifyData = await verifyResponse.json();
+        console.log('Ticket created successfully:', {
+            key: data.key,
+            status: verifyData.fields.status.name,
+            assignee: verifyData.fields.assignee.emailAddress
+        });
+
+        return {
+            ...data,
+            status: verifyData.fields.status.name,
+            assignee: verifyData.fields.assignee.emailAddress
+        };
     } catch (error) {
         console.error('Error creating Jira ticket:', error);
         throw error;

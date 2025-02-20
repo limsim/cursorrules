@@ -7,6 +7,8 @@ This directory contains all test files organized by test type. Each subdirectory
 ```
 tests/
 ├── unit/           # Unit tests
+│   └── jira/       # Jira-related tests
+│       └── createTicket.test.js  # Ticket creation tests
 ├── integration/    # Integration tests
 ├── ui/            # UI/End-to-End tests
 └── performance/   # Performance tests
@@ -31,12 +33,61 @@ All tests must follow these guidelines as per `.cursorrules`:
     */
    ```
 
+## Example: Jira Ticket Creation Tests
+
+The `createTicket.test.js` file demonstrates our testing best practices:
+
+### 1. Test Setup
+```javascript
+beforeEach(() => {
+    // Reset mocks between tests
+    fetch.mockReset();
+    
+    // Prepare test data
+    mockTicketData = {...};
+    
+    // Configure environment
+    process.env.JIRA_HOST = 'test.atlassian.net';
+});
+```
+
+### 2. Test Organization
+- Grouped by functionality
+- Clear test descriptions
+- Comprehensive coverage
+- Isolated test cases
+
+### 3. Mocking External Dependencies
+```javascript
+jest.mock('node-fetch');
+// Mock API responses for predictable testing
+fetch.mockResolvedValueOnce({
+    ok: true,
+    json: () => Promise.resolve(mockData)
+});
+```
+
+### 4. Assertions
+```javascript
+// Verify API calls
+expect(fetch).toHaveBeenCalledTimes(2);
+
+// Verify request data
+expect(requestBody.fields.summary).toBe('Test Ticket');
+
+// Verify response handling
+expect(result).toEqual({
+    status: 'To Do',
+    assignee: 'test@example.com'
+});
+```
+
 ## Running Tests
 
 Tests can be run:
-- Individually
-- By feature group
-- Complete test suite
+- Individually: `npm test tests/unit/jira/createTicket.test.js`
+- By feature group: `npm test tests/unit/jira/*`
+- Complete test suite: `npm test`
 
 ## Test Types
 
