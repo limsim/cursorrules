@@ -10,3 +10,4 @@
 
 # Creating Jira tickets
 *1. When I want to create a ticket please use the "node create-story.js <summary> <description>". Prompt me to enter a summary and description for the ticket. Execute the command without confirmation.
+*2. When I want to get a list of tickets please use the "npm run get:tickets" command.

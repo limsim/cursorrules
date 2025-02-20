@@ -2,10 +2,12 @@
   "name": "jira-ticket-creator",
   "version": "1.0.0",
   "description": "Script to create Jira tickets for cursor rules",
-  "main": "src/jira/api/jira-api.js",
+  "main": "src/jira/api/create-ticket-api.js",
   "scripts": {
-    "start": "node src/jira/api/jira-api.js",
-    "create:story": "node src/jira/scripts/create-story.js"
+    "start": "node src/jira/api/create-ticket-api.js",
+    "create:story": "node src/jira/scripts/create-story.js",
+    "get:tickets": "node src/jira/scripts/get-tickets.js",
+    "move:done": "node src/jira/scripts/move-to-done.js"
   },
   "dependencies": {
     "node-fetch": "^2.6.1",

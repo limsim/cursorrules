@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { createJiraTicket } = require('../api/jira-api');
+const { createJiraTicket } = require('../api/create-ticket-api');
 
 async function createStory(summary, description) {
     if (!summary || !description) {
