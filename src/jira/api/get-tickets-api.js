@@ -34,6 +34,11 @@ async function getAssignedTickets() {
 
         const data = await response.json();
         
+        // Validate response format
+        if (!data || !Array.isArray(data.issues)) {
+            throw new Error('Invalid response format');
+        }
+        
         // Format tickets as "<issueId> - <Summary>"
         return data.issues.map(issue => `${issue.key} - ${issue.fields.summary}`);
     } catch (error) {

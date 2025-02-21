@@ -55,9 +55,10 @@ describe('Get Assigned Tickets', () => {
         expect(fetch).toHaveBeenCalledTimes(1);
         const [url, config] = fetch.mock.calls[0];
 
-        // Verify JQL query includes required filters
-        expect(url).toContain('assignee = currentUser()');
-        expect(url).toContain('status = "In Progress"');
+        // Verify JQL query includes required filters (URL decoded for readability)
+        const decodedUrl = decodeURIComponent(url);
+        expect(decodedUrl).toContain('assignee = currentUser()');
+        expect(decodedUrl).toContain('status = "In Progress"');
 
         // Verify authentication
         expect(config.headers.Authorization).toBeDefined();

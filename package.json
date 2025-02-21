@@ -7,10 +7,50 @@
     "start": "node src/jira/api/create-ticket-api.js",
     "create:story": "node src/jira/scripts/create-story.js",
     "get:tickets": "node src/jira/scripts/get-tickets.js",
-    "move:done": "node src/jira/scripts/move-to-done.js"
+    "move:done": "node src/jira/scripts/move-to-done.js",
+    "test": "jest",
+    "test:coverage": "nyc --reporter=text --reporter=lcov jest",
+    "test:report": "nyc report --reporter=text-summary"
   },
   "dependencies": {
     "node-fetch": "^2.6.1",
     "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nyc": "^15.1.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": ["text", "lcov"],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/node_modules/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  },
+  "nyc": {
+    "exclude": [
+      "tests/**",
+      "coverage/**",
+      "**/*.test.js"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ],
+    "check-coverage": true,
+    "branches": 80,
+    "lines": 80,
+    "functions": 80,
+    "statements": 80
   }
 } 
